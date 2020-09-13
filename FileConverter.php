@@ -100,6 +100,11 @@ class FileConverter
         $this->createCsvFile(json_decode($parsedYaml));
     }
 
+    /**
+     * Parse into json
+     * @param $fileContents
+     * @return false|string
+     */
     private function parseYaml($fileContents)
     {
         $parsedYaml = yaml_parse($fileContents);
@@ -111,6 +116,13 @@ class FileConverter
         return json_encode($yamlArray, JSON_PRETTY_PRINT);
     }
 
+    /**
+     * Assigns array key by path
+     * @param $arr
+     * @param $path
+     * @param $value
+     * @param string $separator
+     */
     private function assignArrayByPath(&$arr, $path, $value, $separator = '.')
     {
         $keys = explode($separator, $path);
